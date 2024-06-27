@@ -63,7 +63,7 @@ def main(
 
         return cropped
 
-    def custom_loader(path: str, n_samples: int = 5) -> torch.Tensor:
+    def custom_loader(path: str) -> torch.Tensor:
         """Loads an image, applies a processing function, and returns augmented versions.
 
         Args:
