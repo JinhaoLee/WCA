@@ -1,8 +1,9 @@
-# Visual-Text Cross Alignment: Refining the Similarity Score in Vision-Language Models (ICML 2024)
+# Visual-Text Cross Alignment: Refining the Similarity Score in Vision-Language Models
 
 Authors: Jinhao Li, Haopeng Li, Sarah M. Erfani, Lei Feng, James Bailey, Feng Liu
 
 [![arXiv](https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg)](https://arxiv.org/abs/2406.02915)
+[![Static Badge](https://img.shields.io/badge/Pub-ICML'24-blue)](https://icml.cc/virtual/2024/poster/34359)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
 ## Introduction
