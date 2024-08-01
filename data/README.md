@@ -48,7 +48,7 @@ $DATA/
 ### ImageNet-R
 
 - Create a folder named `imagenet-r/` under `$DATA`.
-- Download the dataset from [https://www.robots.ox.ac.uk/~vgg/data/pets/](https://www.robots.ox.ac.uk/~vgg/data/pets/).
+- Download the dataset from [https://github.com/hendrycks/imagenet-r](https://github.com/hendrycks/imagenet-r).
 - Extract it to `$DATA/imagenet-r/`.
 
 The directory structure should look like
