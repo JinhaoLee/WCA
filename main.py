@@ -50,7 +50,7 @@ def main(
     
     model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained='laion400m_e32')
     model.eval()  # model in train mode by default, impacts some models with BatchNorm or stochastic depth active
-    openCLIP_tokenizer = open_clip.get_tokenizer('ViT-B-32-quickgelu')
+    # openCLIP_tokenizer = open_clip.get_tokenizer('ViT-B-32-quickgelu')
 
     def random_crop(image: Image.Image, alpha: float = 0.1) -> Image.Image:
         """Randomly crops an image within a size range determined by alpha and the image dimensions.
@@ -136,7 +136,7 @@ def main(
                     dataset_name=dataset_name,
                     tt_scale=text_scale,
                     device=device,
-                    tokenizer=openCLIP_tokenizer,
+                    # tokenizer=openCLIP_tokenizer,
                 )
                 # set zero-shot weights to the same dtype as image features
                 zeroshot_weights = zeroshot_weights.to(image_features.dtype)
