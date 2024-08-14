@@ -16,6 +16,7 @@ from utils import (
     imagenet_a_lt,
     imagenet_r_lt,
 )
+import open_clip # openCLIP' CLIP
 
 
 def load_json(filename):
@@ -144,6 +145,7 @@ def generate_weights(
     dataset_name,
     tt_scale=None,
     device=None,
+    tokenizer,
 ):
     templates = None
     make_sentence = False
@@ -191,6 +193,7 @@ def generate_weights(
         make_sentence,
         tt_scale,
         device,
+        tokenizer,
     )
 
     return zeroshot_weights
@@ -313,6 +316,7 @@ def zeroshot_classifier(
     make_sentence=False,
     tt_scale=None,
     device=None,
+    tokenizer,
 ):
     with torch.no_grad():
         zeroshot_weights = []
@@ -335,11 +339,16 @@ def zeroshot_classifier(
 
             if tt_scale is not None:
                 label = f"a photo of a {textnames[i]}."
-                label_tokens = clip.tokenize(label, truncate=True).to(device)
+                
+                label_tokens = tokenizer(label).to(device)
+                # label_tokens = clip.tokenize(label, truncate=True).to(device)
+                
                 label_embeddings = model.encode_text(label_tokens)
                 label_embeddings /= label_embeddings.norm(dim=-1, keepdim=True)
 
-            texts_tensor = clip.tokenize(texts, truncate=True).to(device)
+            texts_tensor = tokenizer(texts).to(device)
+            # texts_tensor = clip.tokenize(texts, truncate=True).to(device)
+            
             class_embeddings = model.encode_text(texts_tensor)
             class_embeddings /= class_embeddings.norm(dim=-1, keepdim=True)
 

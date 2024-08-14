@@ -3,7 +3,7 @@ batch_size: 32
 dataset: oxford_pet
 data_path : data
 
-alpha: 0.5
+alpha: 0.6
 n_samples: 100
 n_run: 20
 patch_n: 60

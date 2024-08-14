@@ -8,13 +8,13 @@ from helper import (
     load_precomputed_features,
     set_seed,
 )
-from clip import clip
+from clip import clip # openAI' CLIP
 from torchvision.transforms import v2 as T
 from torchvision import datasets
 from torch.nn import functional as F
 from PIL import Image
 
-import open_clip
+import open_clip # openCLIP' CLIP
 
 
 def main(
@@ -42,9 +42,15 @@ def main(
 
     # load model
     print(f"Loading {model_size}")
-    model, processor = clip.load(model_size, device=device)
-    model.eval()
-    model.requires_grad_(False)
+    
+    
+    # model, processor = clip.load(model_size, device=device)
+    # model.eval()
+    # model.requires_grad_(False)
+    
+    model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained='laion400m_e32')
+    model.eval()  # model in train mode by default, impacts some models with BatchNorm or stochastic depth active
+    openCLIP_tokenizer = open_clip.get_tokenizer('ViT-B-32-quickgelu')
 
     def random_crop(image: Image.Image, alpha: float = 0.1) -> Image.Image:
         """Randomly crops an image within a size range determined by alpha and the image dimensions.
@@ -130,6 +136,7 @@ def main(
                     dataset_name=dataset_name,
                     tt_scale=text_scale,
                     device=device,
+                    tokenizer=openCLIP_tokenizer,
                 )
                 # set zero-shot weights to the same dtype as image features
                 zeroshot_weights = zeroshot_weights.to(image_features.dtype)
