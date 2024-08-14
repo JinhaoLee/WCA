@@ -43,12 +43,14 @@ def main(
     # load model
     print(f"Loading {model_size}")
     
-    
+    # Notice: Model directly loaded to device
     # model, processor = clip.load(model_size, device=device)
     # model.eval()
     # model.requires_grad_(False)
     
-    model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', pretrained='laion400m_e32')
+    model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', 
+                                                                pretrained='laion400m_e32',
+                                                                device = device)
     model.eval()  # model in train mode by default, impacts some models with BatchNorm or stochastic depth active
     # openCLIP_tokenizer = open_clip.get_tokenizer('ViT-B-32-quickgelu')
 
