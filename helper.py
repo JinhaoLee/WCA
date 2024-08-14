@@ -342,15 +342,15 @@ def zeroshot_classifier(
                 label = f"a photo of a {textnames[i]}."
 
                 # openCLIP
-                label_tokens = tokenizer.tokenize(label, truncate=True).to(device)
+                label_tokens = tokenizer.tokenize(label).to(device)
                 # openAI-CLIP
                 # label_tokens = clip.tokenize(label, truncate=True).to(device)
                 
                 label_embeddings = model.encode_text(label_tokens)
                 label_embeddings /= label_embeddings.norm(dim=-1, keepdim=True)
 
-            # openCLIP
-            texts_tensor = tokenizer.tokenize(texts, truncate=True).to(device)      
+            # openCLIP; truncation by default
+            texts_tensor = tokenizer.tokenize(texts).to(device)      
             # openAI-CLIP
             # texts_tensor = clip.tokenize(texts, truncate=True).to(device)
             
