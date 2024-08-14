@@ -14,7 +14,8 @@ from torchvision import datasets
 from torch.nn import functional as F
 from PIL import Image
 
-## test
+import open_clip
+
 
 def main(
     dataset_name: str = "imagenet",
