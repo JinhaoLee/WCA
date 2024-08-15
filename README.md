@@ -63,10 +63,9 @@ We thank the following papers for their open-source code and models:
 
 If this repository is helpful in your research, please consider citing our paper.
 ```
-@inproceedings{Li2024visual,
-    title={Visual-Text Cross Alignment: Refining the Similarity Score in Vision-Language Models},
-    author={Li, Jinhao and Li, Haopeng and Erfani, Sarah and Feng, Lei and Bailey, James and Liu, Feng},
-    booktitle = {International Conference on Machine Learning},
-    year={2024},
+@inproceedings{livisual,
+  title={Visual-Text Cross Alignment: Refining the Similarity Score in Vision-Language Models},
+  author={Li, Jinhao and Li, Haopeng and Erfani, Sarah Monazam and Feng, Lei and Bailey, James and Liu, Feng},
+  booktitle={Forty-first International Conference on Machine Learning}
 }
 ```
