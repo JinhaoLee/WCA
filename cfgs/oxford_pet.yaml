@@ -2,6 +2,7 @@ model_size: ViT-B/32
 batch_size: 32
 dataset: oxford_pet
 data_path : data
+pre_trained_corpus: laion400m
 
 alpha: 0.6
 n_samples: 100

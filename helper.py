@@ -17,8 +17,7 @@ from utils import (
     imagenet_r_lt,
 )
 import open_clip # openCLIP' CLIP
-from open_clip import tokenizer # openCLIP' tokenizer
-
+# from open_clip import tokenizer # openCLIP' tokenizer
 
 def load_json(filename):
     if not filename.endswith(".json"):
@@ -146,7 +145,7 @@ def generate_weights(
     dataset_name,
     tt_scale=None,
     device=None,
-    # tokenizer,
+    tokenizer=None,
 ):
     templates = None
     make_sentence = False
@@ -194,7 +193,7 @@ def generate_weights(
         make_sentence,
         tt_scale,
         device,
-        # tokenizer,
+        tokenizer,
     )
 
     return zeroshot_weights
@@ -317,7 +316,7 @@ def zeroshot_classifier(
     make_sentence=False,
     tt_scale=None,
     device=None,
-    # tokenizer,
+    tokenizer=None,
 ):
     with torch.no_grad():
         zeroshot_weights = []

@@ -15,6 +15,7 @@ from torch.nn import functional as F
 from PIL import Image
 
 import open_clip # openCLIP' CLIP
+from open_CLIP.utils import get_engine, OPENCLIP_MODEL_DIC
 
 
 def main(
@@ -39,20 +40,27 @@ def main(
     n_samples = hparams["n_samples"]
     batch_size = hparams["batch_size"]
     data_path = hparams["data_path"]
+    pre_trained_corpus = hparams["pre_trained_corpus"]
 
     # load model
     print(f"Loading {model_size}")
-    
+
+    ################ openAI CLIP  ################
     # Notice: Model directly loaded to device
     # model, processor = clip.load(model_size, device=device)
     # model.eval()
     # model.requires_grad_(False)
     
-    model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', 
-                                                                pretrained='laion400m_e32',
-                                                                device = device)
-    model.eval()  # model in train mode by default, impacts some models with BatchNorm or stochastic depth active
+    ################ openCLIP  ################
+    # model, _, processor = open_clip.create_model_and_transforms('ViT-B-32-quickgelu', 
+    #                                                             pretrained='laion400m_e32',
+    #                                                             device = device)
+    # model.eval()  # model in train mode by default, impacts some models with BatchNorm or stochastic depth active
     # openCLIP_tokenizer = open_clip.get_tokenizer('ViT-B-32-quickgelu')
+
+    ################ openCLIP  get_engine() ################
+    model, processor, tokenizer = get_engine(arch=model_size, corpus=pre_trained_corpus)
+    model.cuda() # movel the model to cuda device
 
     def random_crop(image: Image.Image, alpha: float = 0.1) -> Image.Image:
         """Randomly crops an image within a size range determined by alpha and the image dimensions.
@@ -138,7 +146,7 @@ def main(
                     dataset_name=dataset_name,
                     tt_scale=text_scale,
                     device=device,
-                    # tokenizer=openCLIP_tokenizer,
+                    tokenizer=tokenizer,
                 )
                 # set zero-shot weights to the same dtype as image features
                 zeroshot_weights = zeroshot_weights.to(image_features.dtype)
