@@ -14,13 +14,13 @@
     .
     <a href="https://fengliu90.github.io/"><strong>Feng Liu</strong></a></p>
     <p align="center">
-    <a href="https://arxiv.org/abs/2406.02915">
+    <a href="https://arxiv.org/abs/2406.02915" style="text-decoration:none;">
       <img src="https://img.shields.io/badge/arXiv-1234.56789-b31b1b.svg" alt="arXiv Badge">
     </a>
-    <a href="https://icml.cc/virtual/2024/poster/34359">
+    <a href="https://icml.cc/virtual/2024/poster/34359" style="text-decoration:none;">
       <img src="https://img.shields.io/badge/Pub-ICML'24-blue" alt="ICML Badge">
     </a>
-    <a href="https://opensource.org/licenses/MIT">
+    <a href="https://opensource.org/licenses/MIT" style="text-decoration:none;">
       <img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="MIT License Badge">
     </a>
   </p>
