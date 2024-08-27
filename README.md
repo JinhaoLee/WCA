@@ -39,6 +39,8 @@ Recent research shows that using a pre-trained vision-language model (VLM), like
 
 ![](images/results.png)
 
+![](images/DG_results.png)
+
 ## Prediction Explanation 
 We demonstrate the prediction and explanation of our methods and CLIP-D, in identifying and explaining a given image of a gas mask or respirator. The image is analyzed to predict its category, with the similarity scores between the image and various descriptions plotted for each method
 
